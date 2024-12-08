@@ -1,0 +1,5 @@
+# Auto detect text files and perform LF normalization
+* text=auto
+
+token.txt export-ignore
+input.txt export-ignore
