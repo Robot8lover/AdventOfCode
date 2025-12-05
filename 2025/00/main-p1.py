@@ -62,4 +62,4 @@ r"""
 
 """,r"""
 
-"""], do_case, ) # day and year can be added as arguments if not doing today
+"""], do_case) # day and year can be added as arguments if not doing today
