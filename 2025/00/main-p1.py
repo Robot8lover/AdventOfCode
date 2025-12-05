@@ -1,29 +1,21 @@
 import sys; sys.dont_write_bytecode = True; from utils import *
-from input import 
 """
 To do: ensure Code Runner works, have preloaded the day and input in Chrome,
 saved input into the folder, have utils on the side, collapse regions
 
 Strings, lists, dicts:
-lmap, ints, positive_ints, floats, positive_floats, words, keyvalues
+lmap, min_max, max_minus_min
 
 Algorithms:
 bisect, binary_search, hamming_distance, edit_distance
 
 Data structures:
-Linked, UnionFind
-use deque for queue: q[0], q.append and q.popleft
 
 List/Vector operations:
-GRID_DELTA, OCT_DELTA
-lget, lset, fst, snd
-padd, pneg, psub, pmul, pdot, pdist1, pdist2sq, pdist2
 
 Matrices:
-matmat, matvec, matexp
 
 Previous problems:
-knot
 
 Dict things:
 dict.keys()
