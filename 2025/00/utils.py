@@ -27,7 +27,6 @@ def lmap(func, *iterables):
 def min_max(l):
     return min(l), max(l)
 
-
 def max_minus_min(l):
     return max(l) - min(l)
 
