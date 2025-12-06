@@ -32,7 +32,7 @@ def do_case(inp: str, sample=False):
     for line in lines:
         grid.append(line)
     max_len = max(len(row) for row in grid)
-    grid = [row.ljust(max_len) for row in grid]
+    grid = [row.ljust(max_len) for row in grid] # pad row endings with spaces
     grid_t = lmap(list, zip(*grid)) # transpose
     sprint(grid)
     sprint(grid_t)
