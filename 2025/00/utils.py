@@ -36,6 +36,15 @@ def min_max(l):
 def max_minus_min(l):
     return max(l) - min(l)
 
+def transpose(l, longest=False):
+    # see https://stackoverflow.com/questions/6473679/transpose-list-of-lists
+    if longest:
+        # pads shorter rows with none
+        return lmap(list, itertools.zip_longest(*l, fillvalue=None))
+    else:
+        # short circuits at shortest nested list if table is jagged
+        return lmap(list, zip(*l))
+
 # endregion
 
 # region Algorithms
