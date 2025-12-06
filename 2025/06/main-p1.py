@@ -1,0 +1,78 @@
+import sys; sys.dont_write_bytecode = True; from utils import *
+"""
+To do: ensure Code Runner works, have preloaded the day and input in Chrome,
+saved input into the folder, have utils on the side, collapse regions
+
+Strings, lists, dicts:
+lmap, min_max, max_minus_min
+
+Algorithms:
+bisect, binary_search, hamming_distance, edit_distance
+
+Data structures:
+
+List/Vector operations:
+
+Matrices:
+
+Previous problems:
+
+Dict things:
+dict.keys()
+dict.values()
+dict.items()
+"""
+
+def do_case(inp: str, sample=False):
+    # READ THE PROBLEM FROM TOP TO BOTTOM OK
+    def sprint(*a, **k): sample and print(*a, **k)
+    lines = inp.splitlines()
+
+    grid = []
+    for line in lines:
+        grid.append(line.strip().split()) # strip is not necessary with default split but we use it for safety
+    grid_t = lmap(list, zip(*grid)) # transpose
+    total = 0
+    for prob in grid_t:
+        op = prob[-1]
+        total += reduce(lambda acc, val: eval(str(acc) + op + val), prob[:-1])
+    print(total)
+
+    return # DOES NOTHING, PRINT INSTEAD
+
+run_samples_and_actual([
+# Part 1
+r"""
+123 328  51 64 
+ 45 64  387 23 
+  6 98  215 314
+*   +   *   +
+""",r"""
+
+""",r"""
+
+""",r"""
+
+""",r"""
+
+""",r"""
+
+""",r"""
+
+"""],[
+# Part 2
+r"""
+
+""",r"""
+
+""",r"""
+
+""",r"""
+
+""",r"""
+
+""",r"""
+
+""",r"""
+
+"""], do_case) # day and year can be added as arguments if not doing today
