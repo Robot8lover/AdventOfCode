@@ -28,12 +28,50 @@ def do_case(inp: str, sample=False):
     def sprint(*a, **k): sample and print(*a, **k)
     lines = inp.splitlines()
 
+    lines = [line.strip() for line in lines]
+    first_line = lines[0]
+    width = len(first_line)
+    beams = set()
+    beams.add(first_line.index("S"))
+
+    splits = 0
+    for line in lines[1:]:
+        if "^" not in line:
+            continue
+        next_beams = set()
+        index = -1
+        while "^" in line[index+1:-1]:
+            index = line.index("^", index+1)
+            if index in beams:
+                splits += 1
+                beams.remove(index)
+                next_beams.add(index - 1)
+                next_beams.add(index + 1)
+        beams = next_beams.union(beams)
+    
+    print(splits)
+
     return # DOES NOTHING, PRINT INSTEAD
 
 run_samples_and_actual([
 # Part 1
 r"""
-
+.......S.......
+...............
+.......^.......
+...............
+......^.^......
+...............
+.....^.^.^.....
+...............
+....^.^...^....
+...............
+...^.^...^.^...
+...............
+..^...^.....^..
+...............
+.^.^.^.^.^...^.
+...............
 """,r"""
 
 """,r"""

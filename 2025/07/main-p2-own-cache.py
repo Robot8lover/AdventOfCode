@@ -32,16 +32,18 @@ def do_case(inp: str, sample=False):
     first_line = lines[0]
     first_beam = first_line.index("S")
 
-    @functools.cache
-    def count_timelines(beam, line):
-        if line == len(lines):
-            return 1
-        if lines[line][beam] == "^":
-            return count_timelines(beam - 1, line + 1) + count_timelines(beam + 1, line + 1)
-        else:
-            return count_timelines(beam, line + 1)
+    def count_timelines(beam, line, cache):
+        key = beam, line
+        if key not in cache:
+            if line == len(lines):
+                cache[key] = 1
+            elif lines[line][beam] == "^":
+                cache[key] = count_timelines(beam - 1, line + 1, cache) + count_timelines(beam + 1, line + 1, cache)
+            else:
+                cache[key] = count_timelines(beam, line + 1, cache)
+        return cache[key]
 
-    splits = count_timelines(first_beam, 1)
+    splits = count_timelines(first_beam, 1, {})
 
     print(splits)
 
