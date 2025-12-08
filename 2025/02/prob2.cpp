@@ -45,13 +45,29 @@ void do_case(string filename, bool sample) {
                 ++digits;
                 remaining_num /= 10l;
             }
-            if (remaining_num & 1) {
-                // shortcut if odd
-                continue;
-            }
-            long long mask = pow(10l, digits >> 1);
-            if ((num % mask) == (num / mask)) {
-                total += num;
+            int half_digits = digits >> 1;
+            for (int len = 1; len <= half_digits; ++len) {
+                if ((digits % len) != 0) {
+                    // digits are not divisible by len
+                    continue;
+                }
+                long long mask = pow(10l, len);
+                long long multiplier = mask;
+                int repeats = digits / len;
+                int sequence = num % mask;
+                bool matches = true;
+                for (int i = 1; i < repeats; ++i) {
+                    if (((num / multiplier) % mask) != sequence) {
+                        matches = false;
+                        break;
+                    }
+                    multiplier *= mask;
+                }
+                if (matches) {
+                    // cout << num << endl;
+                    total += num;
+                    break;
+                }
             }
         }
     }
