@@ -45,7 +45,7 @@ void do_case(string filename, bool sample) {
                 ++digits;
                 remaining_num /= 10l;
             }
-            if (remaining_num & 1) {
+            if (digits & 1) {
                 // shortcut if odd
                 continue;
             }
